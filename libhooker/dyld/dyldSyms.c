@@ -229,7 +229,7 @@ privateFunc bool parseSymtab(const struct LHnlist *symbols,
         if (symbol->n_sect == NO_SECT || (symbol->n_type & N_SECT) == 0)
             continue;
         for (size_t j = 0; j < searchSymCount; j++){
-            if (!searchSyms[j] && !strcmp(name, symbolNames[j])){
+            if (!searchSyms[j] && symbolNames[j] && !strcmp(name, symbolNames[j])){
                 searchSyms[j] = symToPtr(symbol, slide);
                 if (++foundSyms == searchSymCount)
                     return true;
